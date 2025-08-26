@@ -1,0 +1,35 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Chatbot</h2>
+  </div>
+  
+  <div class="chat-messages">
+    <div *ngFor="let message of messages" class="message">
+      <div [class]="message.isUser ? 'user' : 'bot'">
+        <strong>{{ message.isUser ? 'You' : 'Bot' }}:</strong> {{ message.text }}
+      </div>
+    </div>
+    
+    <div *ngIf="isLoading" class="message">
+      <div class="bot">
+        <strong>Bot:</strong> กำลังพิมพ์...
+      </div>
+    </div>
+  </div>
+  
+  <div class="chat-input">
+    <form (ngSubmit)="sendMessage()">
+      <input 
+        type="text" 
+        [(ngModel)]="currentMessage" 
+        name="message"
+        placeholder="พิมพ์ข้อความ..."
+        [disabled]="isLoading">
+      <button 
+        type="submit" 
+        [disabled]="!currentMessage.trim() || isLoading">
+        ส่ง
+      </button>
+    </form>
+  </div>
+</div>

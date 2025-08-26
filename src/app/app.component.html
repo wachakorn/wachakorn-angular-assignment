@@ -1,0 +1,25 @@
+<div class="app-container">
+  <nav class="navigation">
+    <div class="nav-container">
+      <h1>My App</h1>
+      <ul class="nav-menu">
+        <li>
+          <a routerLink="/chat" 
+             [class]="isActiveRoute('/chat') ? 'nav-link active' : 'nav-link'">
+            Chat
+          </a>
+        </li>
+        <li>
+          <a routerLink="/form" 
+             [class]="isActiveRoute('/form') ? 'nav-link active' : 'nav-link'">
+            Form
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
